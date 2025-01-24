@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for quote in quotes %}
+        <h2>{{ quote.writer.name }}</h2>
+        <h3>{{ quote.title }}</h3>
+        <p>{{ quote.text }}</p>
+    {% endfor %}
+</body>
+</html>

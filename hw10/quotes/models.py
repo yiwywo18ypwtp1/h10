@@ -11,7 +11,7 @@ class Writer(models.Model):
 
 
 class Tag(models.Model):
-    tag_name = models.CharField(max_length=25)
+    tag_name = models.CharField(max_length=50)
 
 
 class Quote(models.Model):

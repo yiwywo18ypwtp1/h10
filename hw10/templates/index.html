@@ -7,8 +7,8 @@
 <body>
     {% for quote in quotes %}
         <h2>{{ quote.writer.name }}</h2>
-        <h3>{{ quote.title }}</h3>
         <p>{{ quote.text }}</p>
+    <p><i>{{ quote.tag }}</i></p>
     {% endfor %}
 </body>
 </html>

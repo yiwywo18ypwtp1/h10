@@ -8,7 +8,7 @@ def main_page(request):
     quotes_list = []
 
     for i in all_quotes:
-        print(f'{i.writer.name}: {i.title} - {i.text}')
+        print(f'{i.writer.name}: - {i.text} | {i.tag}')
         quotes_list.append(i)
 
     context = quotes_list

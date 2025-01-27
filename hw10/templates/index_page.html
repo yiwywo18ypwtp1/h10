@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes to scrape</title>
+    {% block extra_css %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'quote/styles/index_style.css' %}">
+    <link rel="stylesheet" href="{% static 'quote/styles/head_style.css' %}">
+    {% endblock %}
+</head>
+<body>
+<div class="main-container">
+    <header>
+        <h1><a href="{% url 'main_page' %}" class="quotes-to-scrape">Qoutes to scrape</a></h1>
+        <a href="{% url 'login' %}">Login</a>
+    </header>
+
+    <div class="cont">
+        <div class="quotes-row">
+            {% for quote in quotes %}
+            <div class="quote">
+                <p>
+                    <i>{{ quote.text }}</i>
+                <p class="author"><b>by {{ quote.writer.name }} </b><a class="about"
+                                                                       href="{% url 'author' name=quote.writer.name %}">(about)</a>
+                </p>
+                <p>Tags: <a class="tag"> {{ quote.tag }} </a></p>
+                </p>
+            </div>
+            {% endfor %}
+
+        </div>
+        <div class="tags">
+            <h1>Tags</h1>
+            <ul class="tag-row">
+                <li class="tag"><a href="{% url 'main_page' tag=love %}">love</a></li>
+                <li class="tag"><a href="{% url 'main_page' tag=life %}">life</a></li>
+                <li class="tag"><a href="{% url 'main_page' tag=humor %}">humor</a></li>
+                <li class="tag"><a href="{% url 'main_page' tag=be-yourself %}">be-yourself</a></li>
+                <li class="tag"><a href="{% url 'main_page' tag=change %}">change</a></li>
+                <li class="tag"><a href="{% url 'main_page' tag=inspiritional %}">inspiritional</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

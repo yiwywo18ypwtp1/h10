@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% block extra_css %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'quote/styles/author_style.css' %}">
+    <link rel="stylesheet" href="{% static 'quote/styles/head_style.css' %}">
+    {% endblock %}
+</head>
+<body>
+<div class="main-container">
+    <header>
+        <h1><a href="{% url 'main_page' %}" class="quotes-to-scrape">Qoutes to scrape</a></h1>
+        <a href="{% url 'login' %}">Login</a>
+    </header>
+
+    <div class="cont">
+        <div><h1> {{ author_name }} </h1></div>
+        <div><h3> {{ writer.birthday }} </h3></div>
+        <div><h4> Description: </h4></div>
+        <p>
+            {{ writer.description }}
+        </p>
+    </div>
+</div>
+</body>
+</html>

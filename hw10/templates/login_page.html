@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% block extra_css %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'quote/styles/login_style.css' %}">
+    <link rel="stylesheet" href="{% static 'quote/styles/head_style.css' %}">
+    {% endblock %}
+</head>
+<body>
+<div class="main-container">
+    <header>
+        <h1><a href="{% url 'main_page' %}" class="quotes-to-scrape">Qoutes to scrape</a></h1>
+        <a href="{% url 'login' %}">Login</a>
+    </header>
+
+    <div class="cont">
+        <div class="form">
+            <div>
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" placeholder="Enter unique username">
+            </div>
+
+            <div>
+                <label for="username">Password</label>
+                <input type="password" name="username" id="username" placeholder="Enter password">
+            </div>
+
+            <div>
+                <button>Login</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

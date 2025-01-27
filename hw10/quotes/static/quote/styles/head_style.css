@@ -1,0 +1,63 @@
+html {
+    overflow-y: scroll;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.dev-back {
+    background-color: rgba(206, 122, 154, 0.5);
+}
+
+
+body {
+    margin: 0;
+    padding-right: calc(100vw - 100%); /* Учитываем ширину полосы прокрутки */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-container {
+    padding: 35px 45px 45px 45px;
+    display:flex;
+    flex-direction: column;
+    width: 1200px;
+    min-height: auto;
+
+    border-radius: 0px 0px 10px 10px;
+}
+
+header {
+    margin-bottom: 65px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quotes-to-scrape {
+    color: #577ee7;
+    font-size: 50px;
+}
+.quotes-to-scrape:hover {
+    color: #3677E8;
+    font-size: 50px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+header a {
+    color: #577ee7;
+    font-size: 20px;
+    text-decoration: none;
+}
+header a:hover {
+    color: #3677E8;
+    font-size: 20px;
+    text-decoration: underline;
+}

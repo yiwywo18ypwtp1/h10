@@ -4,16 +4,20 @@ from quotes.models import Quote
 from quotes.models import Writer
 
 
-def main_page(request):
-    all_quotes = Quote.objects.all()
+def main_page(request, tag=None):
+    if tag:
+        all_quotes = Quote.objects.filter(tag__tag_name__icontains=tag)
+    else:
+        all_quotes = Quote.objects.all()
+
     quotes_list = []
 
     for i in all_quotes:
-        # print(f'{i.writer.name}: - {i.text} | {i.tag}')
         quotes_list.append(i)
 
     context = {
         'quotes': quotes_list,
+        'tag': tag,
     }
     return render(request, 'index_page.html', context=context)
 

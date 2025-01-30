@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Author Info</title>
     {% block extra_css %}
     {% load static %}
     <link rel="stylesheet" href="{% static 'quote/styles/author_style.css' %}">
@@ -13,8 +13,19 @@
 <body>
 <div class="main-container">
     <header>
-        <h1><a href="{% url 'main_page' %}" class="quotes-to-scrape">Qoutes to scrape</a></h1>
-        <a href="{% url 'login' %}">Login</a>
+        <div class="quotes-to-scrape">
+            <h1><a href="{% url 'main_page' %}">Qoutes to scrape</a></h1>
+        </div>
+
+        <div class="kyky">
+            {% if user.is_authenticated %}
+            <p>Welcome back, {{ user.username }}!</p>
+            <a href="{% url 'logout' %}">Logout</a>
+            {% else %}
+            <p>You are not authorized</p>
+            <a href="{% url 'login' %}">Login</a>
+            {% endif %}
+        </div>
     </header>
 
     <div class="cont">

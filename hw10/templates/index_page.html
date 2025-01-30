@@ -13,15 +13,30 @@
 <body>
 <div class="main-container">
     <header>
-        <h1><a href="{% url 'main_page' %}" class="quotes-to-scrape">Qoutes to scrape</a></h1>
-        <a href="{% url 'login' %}">Login</a>
+        <div class="quotes-to-scrape">
+            <h1><a href="{% url 'main_page' %}">Qoutes to scrape</a></h1>
+            {% if user.is_authenticated %}
+            <button><p>+</p>ADD QUOTE</button>
+            {% else %}
+            {% endif %}
+        </div>
+
+        <div class="kyky">
+            {% if user.is_authenticated %}
+            <p>Welcome back, {{ user.username }}!</p>
+            <a href="{% url 'logout' %}">Logout</a>
+            {% else %}
+            <p>You are not authorized</p>
+            <a href="{% url 'login' %}">Login</a>
+            {% endif %}
+        </div>
     </header>
 
     <h1>
         {% if tag %}
-        Quotes for tag: "{{ tag }}"
+        Quotes with tag: <h1 class="author">{{ tag }}</h1>
         {% else %}
-        All Quotes
+
         {% endif %}
     </h1>
 
@@ -31,8 +46,9 @@
             <div class="quote">
                 <p>
                     <i>{{ quote.text }}</i>
-                <p class="author"><b>by {{ quote.writer.name }} </b><a class="about"
-                                                                       href="{% url 'author' name=quote.writer.name %}">(about)</a>
+                <p class="author">
+                    <b>by {{ quote.writer.name }} </b>
+                    <a class="about" href="{% url 'author' name=quote.writer.name %}">(about)</a>
                 </p>
                 <p>Tags: <a class="tag"> {{ quote.tag }} </a></p>
                 </p>
@@ -42,13 +58,11 @@
         </div>
         <div class="tags">
             <h1>Tags</h1>
+
             <ul class="tag-row">
-                <li class="tag"><a href="{% url 'main_page' tag='love' %}">love</a></li>
-                <li class="tag"><a href="{% url 'main_page' tag='life' %}">life</a></li>
-                <li class="tag"><a href="{% url 'main_page' tag='humor' %}">humor</a></li>
-                <li class="tag"><a href="{% url 'main_page' tag='be-yourself' %}">be-yourself</a></li>
-                <li class="tag"><a href="{% url 'main_page' tag='change' %}">change</a></li>
-                <li class="tag"><a href="{% url 'main_page' tag='inspiritional' %}">inspiritional</a></li>
+                {% for tag in all_tags %}
+                <li class="tag"><a href="{% url 'main_page' tag=tag.tag_name %}">{{ tag.tag_name }}</a></li>
+                {% endfor %}
             </ul>
         </div>
     </div>

@@ -64,10 +64,25 @@
     border-radius: 5px;
     color: white;
     word-wrap: normal;
+    text-decoration: none;
+}
+.tag a {
+    color: white;
+    text-decoration: none;
+}
+
+.tag {
+    padding: 3px 6px 3px 6px;
+    width: fit-content;
+    background-color: #7CA3E6;
+    border-radius: 5px;
+    color: white;
+    word-wrap: normal;
+    text-decoration: none;
 }
 
 .tag:hover {
-    color: #3677E8;
+    background-color: #3677E8;
     cursor: pointer;
 }
 

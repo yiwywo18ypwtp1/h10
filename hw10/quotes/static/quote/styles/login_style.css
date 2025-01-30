@@ -18,7 +18,7 @@ label {
     font-weight: 600;;
 }
 
-input {
+.input {
     padding: 0px 10px 0px 10px;
     font-size: 18px;
 
@@ -29,7 +29,7 @@ input {
 
     transition: border 300ms linear,  box-shadow 300ms linear ;
 }
-input:focus {
+.input:focus {
     border: 1px solid #577ee7;
     outline: none;
 

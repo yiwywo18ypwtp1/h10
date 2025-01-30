@@ -40,11 +40,11 @@ header {
     align-items: center;
 }
 
-.quotes-to-scrape {
+.quotes-to-scrape a{
     color: #577ee7;
     font-size: 50px;
 }
-.quotes-to-scrape:hover {
+.quotes-to-scrape a:hover {
     color: #3677E8;
     font-size: 50px;
     cursor: pointer;
@@ -60,4 +60,49 @@ header a:hover {
     color: #3677E8;
     font-size: 20px;
     text-decoration: underline;
+}
+
+.kyky {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 10px;
+}
+.kyky p {
+    font-style: italic;
+}
+
+.quotes-to-scrape {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+}
+
+.quotes-to-scrape button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    background-color: #577ee7;
+    color: white;
+    font-size: 12px;
+    border: none;
+    width: 130px;
+    height: 40px;
+    border-radius: 50px;
+    cursor: pointer;
+
+    transition: background-color 300ms linear, border-color 300ms linear, color 300ms linear;
+}
+.quotes-to-scrape button:hover {
+    background-color: white;
+    border: 1px solid #577ee7;
+    color: #577ee7;
+}
+
+.quotes-to-scrape button p {
+    font-weight: 100;
+    font-size: 20px;
 }

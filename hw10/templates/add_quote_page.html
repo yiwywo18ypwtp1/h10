@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adding quote</title>
+    {% block extra_css %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'quote/styles/add_quote.css' %}">
+    <link rel="stylesheet" href="{% static 'quote/styles/head_style.css' %}">
+    {% endblock %}
+</head>
+<body>
+<div class="main-container">
+    <header>
+        <div class="quotes-to-scrape">
+            <h1><a href="{% url 'main_page' %}">Qoutes to scrape</a></h1>
+        </div>
+
+        <div class="kyky">
+            {% if user.is_authenticated %}
+            <p>Welcome back, {{ user.username }}!</p>
+            <a href="{% url 'logout' %}">Logout</a>
+            {% else %}
+            <p>You are not authorized</p>
+            <a href="{% url 'login' %}">Login</a>
+            {% endif %}
+        </div>
+    </header>
+
+        <div class="cont">
+            <form action="{% url 'add_quote' %}" class="form" method="POST">
+                {% csrf_token %}
+                <div>
+                    <label>Author Name</label>
+                    {{ form.writer }}
+                </div>
+
+                <div>
+                    <label>Quote text</label>
+                    {{ form.text }}
+                </div>
+
+                <div>
+                    <label>Tag</label>
+                    {{ form.tag }}
+                </div>
+
+                <div>
+                    <button type="submit">Add!</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

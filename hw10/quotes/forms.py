@@ -2,6 +2,8 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 
+from .models import Quote, Writer, Tag
+
 
 class RegistrationForm(UserCreationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'class': 'input', 'placeholder': 'Enter unique username'}))
@@ -26,10 +28,11 @@ class LoginForm(AuthenticationForm):
         fields = ['username', 'password']
 
 
-class AddQuoteForm(forms.ModelForm):
-    text = forms.CharField(widget=forms.TextInput())
+class AddQuoteForm(forms.Form):
+    text = forms.CharField(widget=forms.Textarea(attrs={'class': 'textarea', 'placeholder': 'Enter text'}))
     writer = forms.CharField(widget=forms.TextInput(attrs={'class': 'input', 'placeholder': 'Enter a author name'}))
     tag = forms.CharField(widget=forms.TextInput(attrs={'class': 'input', 'placeholder': 'Enter a author name'}))
 
     class Meta:
-        pass
+        model = Quote
+        fields = ['text', 'writer', 'tag']

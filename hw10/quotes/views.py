@@ -1,4 +1,5 @@
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
@@ -6,7 +7,7 @@ from django.views.generic import CreateView
 
 from quotes.models import Quote, Writer, Tag
 
-from quotes.forms import RegistrationForm, LoginForm
+from quotes.forms import RegistrationForm, LoginForm, AddQuoteForm
 
 
 def main_page(request, tag=None):
@@ -24,7 +25,7 @@ def main_page(request, tag=None):
     for i in all_tags:
         tags_list.append(i)
 
-    print(tags_list)
+    # print(tags_list)
 
     context = {
         'quotes': quotes_list,
@@ -48,6 +49,31 @@ def author(request, name):
         'writer': writer
     }
     return render(request, 'author_page.html', context=context)
+
+
+@login_required
+def add_quote(request):
+    if request.method == 'POST':
+        form = AddQuoteForm(request.POST)
+        if form.is_valid():
+            quote_text = form.cleaned_data['text']
+            author_name = form.cleaned_data['writer']
+            tag_name = form.cleaned_data['tag']
+
+            writer, _ = Writer.objects.get_or_create(name=author_name)
+            tag, _ = Tag.objects.get_or_create(tag_name=tag_name)
+
+            Quote.objects.create(text=quote_text, writer=writer, tag=tag)
+
+            return redirect('main_page')
+    else:
+        form = AddQuoteForm()
+
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'add_quote_page.html', context=context)
 
 
 class RegisterUser(CreateView):

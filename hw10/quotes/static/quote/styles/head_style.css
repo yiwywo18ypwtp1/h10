@@ -40,11 +40,11 @@ header {
     align-items: center;
 }
 
-.quotes-to-scrape a{
+.quotes-to-scrape h1 a{
     color: #577ee7;
     font-size: 50px;
 }
-.quotes-to-scrape a:hover {
+.quotes-to-scrape h1 a:hover {
     color: #3677E8;
     font-size: 50px;
     cursor: pointer;
@@ -79,7 +79,7 @@ header a:hover {
     gap: 30px;
 }
 
-.quotes-to-scrape button {
+.button {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -88,7 +88,7 @@ header a:hover {
     background-color: #577ee7;
     color: white;
     font-size: 12px;
-    border: none;
+    border: 1px solid #577ee7;
     width: 130px;
     height: 40px;
     border-radius: 50px;
@@ -96,13 +96,14 @@ header a:hover {
 
     transition: background-color 300ms linear, border-color 300ms linear, color 300ms linear;
 }
-.quotes-to-scrape button:hover {
+.button:hover {
     background-color: white;
     border: 1px solid #577ee7;
     color: #577ee7;
+    font-size: 12px;
+    text-decoration: none;
 }
 
-.quotes-to-scrape button p {
-    font-weight: 100;
+.button p {
     font-size: 20px;
 }

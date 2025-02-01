@@ -16,7 +16,7 @@
         <div class="quotes-to-scrape">
             <h1><a href="{% url 'main_page' %}">Qoutes to scrape</a></h1>
             {% if user.is_authenticated %}
-            <button><p>+</p>ADD QUOTE</button>
+            <a class="button" href="{% url 'add_quote' %}"><p>+</p>ADD QUOTE</a>
             {% else %}
             {% endif %}
         </div>

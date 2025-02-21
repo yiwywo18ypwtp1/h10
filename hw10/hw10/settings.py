@@ -1,4 +1,5 @@
 from pathlib import Path
+# import django.db.backends.postgresql
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -63,10 +64,21 @@ WSGI_APPLICATION = 'hw10.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',  # Имя вашей базы данных
+        'USER': 'postgres',  # Имя пользователя для подключения
+        'PASSWORD': '1234567vocem',  # Пароль для пользователя
+        'HOST': 'localhost',  # Адрес хоста базы данных
+        'PORT': '5432',  # Порт PostgreSQL
     }
 }
 

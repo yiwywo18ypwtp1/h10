@@ -41,7 +41,6 @@ def author(request, name):
     for i in all_writers:
         if i.name == name:
             writer = i
-            # print(f'writer = {writer}')
             break
 
     context = {

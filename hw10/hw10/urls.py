@@ -22,8 +22,6 @@ urlpatterns = [
     path('register/', RegisterUser.as_view(), name='register'),
 
 
-
-
     path(
         'reset-password/',
         views.ResetPasswordView.as_view(form_class=CustomPasswordResetForm),  # ⬅ Правильно передаем здесь

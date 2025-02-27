@@ -1,13 +1,17 @@
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
+from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
+from django.contrib.auth.views import PasswordResetView
 
 from quotes.models import Quote, Writer, Tag
 
 from quotes.forms import RegistrationForm, LoginForm, AddQuoteForm
+
+from quotes.forms import CustomPasswordResetForm
 
 
 def main_page(request, tag=None):
@@ -93,3 +97,13 @@ class LoginUser(LoginView):
 def logout_user(request):
     logout(request)
     return redirect('login')
+
+
+class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
+    template_name = 'password_reset.html'
+    email_template_name = 'password_reset_email.html'
+    html_email_template_name = 'password_reset_email.html'
+    success_url = reverse_lazy('password_reset_done')
+    success_message = "An email with instructions to reset your password has been sent to %(email)s."
+    subject_template_name = 'password_reset_subject.txt'
+    form_class = CustomPasswordResetForm

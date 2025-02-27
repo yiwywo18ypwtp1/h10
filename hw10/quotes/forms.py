@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordResetForm, SetPasswordForm
 from django.contrib.auth.models import User
 
 from .models import Quote, Writer, Tag
@@ -36,3 +36,35 @@ class AddQuoteForm(forms.Form):
     class Meta:
         model = Quote
         fields = ['text', 'writer', 'tag']
+
+
+
+class CustomPasswordResetForm(PasswordResetForm):
+    email = forms.EmailField(
+        max_length=254,
+        widget=forms.EmailInput(attrs={
+            'class': 'input',
+            'placeholder': 'Enter ur email',
+            'autocomplete': 'email'
+        })
+    )
+
+
+class CustomSetPasswordForm(SetPasswordForm):
+    new_password1 = forms.CharField(
+        label="New password",
+        widget=forms.PasswordInput(attrs={
+            'class': 'input',
+            'placeholder': 'Enter ur new password',
+            'autocomplete': 'new-password'
+        })
+    )
+    new_password2 = forms.CharField(
+        label="Confirm password",
+        widget=forms.PasswordInput(attrs={
+            'class': 'input',
+            'placeholder': 'Repeat ur password',
+            'autocomplete': 'new-password'
+        })
+    )
+

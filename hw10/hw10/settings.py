@@ -18,6 +18,17 @@ ALLOWED_HOSTS = []
 LOGIN_URL = '/login/'
 
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.meta.ua'
+EMAIL_PORT = 465
+EMAIL_STARTTLS = False
+EMAIL_USE_SSL = True
+EMAIL_USE_TLS = False
+EMAIL_HOST_USER = 'galapetrovna77@meta.ua'
+EMAIL_HOST_PASSWORD = 'Y13rg9c0'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
 # Application definition
 
 INSTALLED_APPS = [
